@@ -8,7 +8,7 @@ using namespace std;
 
 void limpiar_terminal(){
 	#ifdef WINDOWS
-	    std::system("cls");
+		std::system("cls");
 	#else
 	    // Assume POSIX
 	    std::system("clear");
@@ -53,37 +53,55 @@ void imprimir(const vector<int> v) {
 }
 
 float promedio(vector<int> v) {
-	int suma = 0;
-	for (int elemento : v) {
-		suma += elemento;
-	}
-	float prom = (float)suma / v.size();
 	limpiar_terminal();
-	printf("Sumatoria: %i\n\n", suma);
-	printf("Promedio: %.2lf\n\n", prom);
-	pausar_terminal();
-	return prom;
+	if (!v.empty()){
+		int suma = 0;
+		for (int elemento : v) {
+			suma += elemento;
+		}
+		float prom = (float)suma / v.size();
+		printf("Sumatoria: %i\n\n", suma);
+		printf("Promedio: %.2lf\n\n", prom);
+		pausar_terminal();
+		return prom;
+	}else{
+		printf("Vector vacio!\n\n");
+		pausar_terminal();
+		return 0;
+	}
 }
 
 float varianza(vector<int> v, int prom) {
-	float sumaCuadrados = 0;
-	for (int elemento : v) {
-		sumaCuadrados += (float) pow(elemento - prom, 2);
-	}
-	float varia = (float)sumaCuadrados / v.size();
 	limpiar_terminal();
-	printf("Diferencia 2: %.2lf\n\n", sumaCuadrados);
-	printf("Varianza: %.2lf\n\n", varia);
-	pausar_terminal();
-	return varia;
+	if (!v.empty()){
+		float sumaCuadrados = 0;
+		for (int elemento : v) {
+			sumaCuadrados += (float) pow(elemento - prom, 2);
+		}
+		float varia = (float)sumaCuadrados / v.size();
+		printf("Diferencia 2: %.2lf\n\n", sumaCuadrados);
+		printf("Varianza: %.2lf\n\n", varia);
+		pausar_terminal();
+		return varia;
+	}else{
+		printf("Vector vacio!\n\n");
+		pausar_terminal();
+		return 0;
+	}
 }
 
 float desviacionTipica(float varianza) {
-	float desvTipica = (float) sqrt(varianza);
 	limpiar_terminal();
-	printf("Desviacion Estandar: %.2lf\n\n", desvTipica);
-	pausar_terminal();
-	return desvTipica;
+	if (varianza > 0){
+		float desvTipica = (float) sqrt(varianza);
+		printf("Desviacion Estandar: %.2lf\n\n", desvTipica);
+		pausar_terminal();
+		return desvTipica;
+	}else{
+		printf("Vector vacio!\n\n");
+		pausar_terminal();
+		return 0;
+	}
 }
 
 void opciones() {
@@ -130,6 +148,3 @@ void opciones() {
 int main() {
 	opciones();
 }
-
-
-
