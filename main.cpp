@@ -7,18 +7,17 @@
 using namespace std;
 
 void limpiar_terminal(){
-	#ifdef WINDOWS
-		std::system("cls");
+	#ifdef _WIN32
+		system ("cls");
 	#else
-	    // Assume POSIX
-	    std::system("clear");
+	    system("clear");
 	#endif
 }
+
 void pausar_terminal(){
-	#ifdef WINDOWS
-	    std::system("pause");
+	#ifdef _WIN32
+	    system("pause");
 	#else
-	    // Assume POSIX
 	    system("read -p 'Press Enter to continue...' var");
 	#endif
 }
