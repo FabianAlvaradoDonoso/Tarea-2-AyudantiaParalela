@@ -79,7 +79,7 @@ float varianza(vector<int> v, int prom) {
 			sumaCuadrados += (float) pow(elemento - prom, 2);
 		}
 		float varia = (float)sumaCuadrados / v.size();
-		printf("Diferencia 2: %.2lf\n\n", sumaCuadrados);
+		//printf("Diferencia 2: %.2lf\n\n", sumaCuadrados);
 		printf("Varianza: %.2lf\n\n", varia);
 		pausar_terminal();
 		return varia;
