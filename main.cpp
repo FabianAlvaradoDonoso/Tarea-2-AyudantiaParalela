@@ -30,7 +30,7 @@ vector<int> crearArreglo() {
 	cout << "Ingrese cantidad de datos en el vector: "; cin >> tamanio;
 
 	for (int i = 0; i < tamanio; i++) {
-		int num = 1 + rand() % (11 - 1);
+		int num = 1 + rand() % (101 - 1);
 		v.push_back(num);
 	}
 	return v;
