@@ -1,13 +1,35 @@
 #include <iostream>  //cout, cin
-#include <stdlib.h>  //rand()
 #include <time.h>    //time(null)
 #include <vector>    //vector<int>
 #include <math.h>    //pow()
+#include <cstdlib>   //rand()
 
 using namespace std;
 
-vector<int> crearArreglo(int tamanio) {
+void limpiar_terminal(){
+	#ifdef WINDOWS
+	    std::system("cls");
+	#else
+	    // Assume POSIX
+	    std::system("clear");
+	#endif
+}
+void pausar_terminal(){
+	#ifdef WINDOWS
+	    std::system("pause");
+	#else
+	    // Assume POSIX
+	    system("read -p 'Press Enter to continue...' var");
+	#endif
+}
+
+vector<int> crearArreglo() {
+	limpiar_terminal();
+	int tamanio = 0;
 	vector<int> v;
+
+	cout << "Ingrese cantidad de datos en el vector: "; cin >> tamanio;
+
 	for (int i = 0; i < tamanio; i++) {
 		int num = 1 + rand() % (11 - 1);
 		v.push_back(num);
@@ -16,9 +38,9 @@ vector<int> crearArreglo(int tamanio) {
 }
 
 void imprimir(const vector<int> v) {
+	limpiar_terminal();
 	if (!v.empty()) {
 		int i = 0;
-		system("cls");
 		for (int element : v) {
 			printf("Vector[%i]: %i\n", i, element);
 			i++;
@@ -27,6 +49,7 @@ void imprimir(const vector<int> v) {
 	else {
 		printf("Vector vacio!\n\n");
 	}
+	pausar_terminal();
 }
 
 float promedio(vector<int> v) {
@@ -35,9 +58,10 @@ float promedio(vector<int> v) {
 		suma += elemento;
 	}
 	float prom = (float)suma / v.size();
-	system("cls");
+	limpiar_terminal();
 	printf("Sumatoria: %i\n\n", suma);
 	printf("Promedio: %.2lf\n\n", prom);
+	pausar_terminal();
 	return prom;
 }
 
@@ -47,27 +71,29 @@ float varianza(vector<int> v, int prom) {
 		sumaCuadrados += (float) pow(elemento - prom, 2);
 	}
 	float varia = (float)sumaCuadrados / v.size();
-	system("cls");
+	limpiar_terminal();
 	printf("Diferencia 2: %.2lf\n\n", sumaCuadrados);
 	printf("Varianza: %.2lf\n\n", varia);
+	pausar_terminal();
 	return varia;
 }
 
 float desviacionTipica(float varianza) {
 	float desvTipica = (float) sqrt(varianza);
-	system("cls");
+	limpiar_terminal();
 	printf("Desviacion Estandar: %.2lf\n\n", desvTipica);
+	pausar_terminal();
 	return desvTipica;
 }
 
 void opciones() {
 	vector<int> v;
-	int tamanio, opcionPrincipal = 0;
+	int opcionPrincipal = 0;
 	srand(time(NULL));
 	float prom, varia, desvTipica;
 
 	while (opcionPrincipal != 6) {
-		system("cls");
+		limpiar_terminal();
 		cout << "1.- Crear vector" << endl;
 		cout << "2.- Imprimir vector" << endl;
 		cout << "3.- Promedio" << endl;
@@ -78,34 +104,23 @@ void opciones() {
 
 		switch (opcionPrincipal) {
 		case 1:
-			system("cls");
-			cout << "Ingrese largo del arreglo: "; cin >> tamanio;
-			v = crearArreglo(tamanio);
+			v = crearArreglo();
 			break;
 		case 2:
-			system("cls");
 			imprimir(v);
-			system("pause");
 			break;
 		case 3:
-			system("cls");
 			prom = promedio(v);
-			system("pause");
 			break;
 		case 4:
-			system("cls");
 			varia = varianza(v, prom);
-			system("pause");
 			break;
 		case 5:
-			system("cls");
 			desvTipica = desviacionTipica(varia);
-			system("pause");
 			break;
 		case 6:
-			system("cls");
+			limpiar_terminal();
 			cout << "\nHasta pronto!!!\n\n" << endl;
-			system("pause");
 			break;
 		}
 	}
@@ -115,5 +130,6 @@ void opciones() {
 int main() {
 	opciones();
 }
+
 
 
