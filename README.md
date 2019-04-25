@@ -14,16 +14,16 @@ Objetivo Tarea: Como tarea 2 se les pedirá  realizar un algoritmo escrito en C/
 ## Linux / MacOs
 
  1. Abrir una terminal y dirigirse a la ubicacion del archivo **main.cpp**
- 2. Compilar con: `g++ -o ejecutableEnv main.cpp`
- 3. Ejecutar con: `./ejecutableEnv`
+ 2. Compilar con: `g++ -o ejecutable main.cpp`
+ 3. Ejecutar con: `./ejecutable`
 
 ## Windows
 
 En el caso de tener instalado C-Program Compiler (gcc):
  1. Abrir *Simbolo de sistema*.
  2. Dirigirse a la ubicacion donde este **main.cpp** 
- 3. Compilar con: `g++ -o ejecutableEnv main.cpp`
- 4. Ejecutar con: `ejecutableEnv`
+ 3. Compilar con: `g++ -o ejecutable main.cpp`
+ 4. Ejecutar con: `ejecutable`
 
 En el caso de tener Visual Studio instalado:
  1. Abrir *Símbolo de sistema para desarrolladores de VS*. 
